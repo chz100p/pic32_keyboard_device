@@ -83,10 +83,10 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 /*** DEVCFG2 ***/
 
-#pragma config FPLLIDIV =   DIV_1
+#pragma config FPLLIDIV =   DIV_5
 #pragma config FPLLMUL =    MUL_20
 #pragma config FPLLODIV =   DIV_2
-#pragma config UPLLIDIV =   DIV_1
+#pragma config UPLLIDIV =   DIV_5
 #pragma config UPLLEN =     ON
 
 /*** DEVCFG3 ***/
@@ -490,9 +490,6 @@ void SYS_Initialize ( void* data )
     sysObj.sysDevcon = SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)&sysDevconInit);
     SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
     SYS_PORTS_Initialize();
-
-    /* Board Support Package Initialization */
-    BSP_Initialize();
 
     /* Initialize Drivers */
     /* Initialize USB Driver */ 

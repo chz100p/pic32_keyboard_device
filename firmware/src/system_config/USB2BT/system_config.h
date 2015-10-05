@@ -65,7 +65,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     define this configuration.
 */
 
-#include "bsp_config.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -85,7 +84,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define SYS_CLK_FREQ                        40000000ul
 #define SYS_CLK_BUS_PERIPHERAL_1            40000000ul
 #define SYS_CLK_UPLL_BEFORE_DIV2_FREQ       96000000ul
-#define SYS_CLK_CONFIG_PRIMARY_XTAL         4000000ul
+#define SYS_CLK_CONFIG_PRIMARY_XTAL         20000000ul
 #define SYS_CLK_CONFIG_SECONDARY_XTAL       0ul
    
 /*** Interrupt System Service Configuration ***/
@@ -93,19 +92,11 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 /*** Ports System Service Configuration ***/
 
-#define SYS_PORT_A_ANSEL        0xc
-#define SYS_PORT_A_TRIS         0xc
-#define SYS_PORT_A_LAT          0x0
-#define SYS_PORT_A_ODC          0x0
-#define SYS_PORT_A_CNPU         0x0
-#define SYS_PORT_A_CNPD         0x0
-#define SYS_PORT_A_CNEN         0x0
-
-#define SYS_PORT_B_ANSEL        0xc1f
-#define SYS_PORT_B_TRIS         0xefbf
+#define SYS_PORT_B_ANSEL        0xcc1f
+#define SYS_PORT_B_TRIS         0xee3f
 #define SYS_PORT_B_LAT          0x0
 #define SYS_PORT_B_ODC          0x0
-#define SYS_PORT_B_CNPU         0xe000
+#define SYS_PORT_B_CNPU         0x0
 #define SYS_PORT_B_CNPD         0x0
 #define SYS_PORT_B_CNEN         0x0
  
