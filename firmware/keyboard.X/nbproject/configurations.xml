@@ -214,6 +214,14 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../../../../bsp/pic32mx230f064b/bsp_config.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../bsp/pic32mx230f064b/bsp_sys_init.c"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../src/system_config/default/framework/system/clk/src/sys_clk_static.c"
             ex="true"
             overriding="false">

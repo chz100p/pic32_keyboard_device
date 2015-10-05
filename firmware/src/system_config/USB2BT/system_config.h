@@ -53,7 +53,12 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
    functions that causes superfluous warnings.  It "nulls" out the definition of
    The PLIB function attribute that causes the warning.  Once that issue has been
    resolved, this definition should be removed. */
+#ifndef _PLIB_UNSUPPORTED
+
+//    #define _PLIB_UNSUPPORTED   __attribute__((unsupported("The microcontroller selected does not implement this feature.")))
 #define _PLIB_UNSUPPORTED
+
+#endif
 
 
 // *****************************************************************************

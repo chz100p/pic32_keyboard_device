@@ -46,6 +46,117 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
  *******************************************************************************/
 // DOM-IGNORE-END
 
+// fake bsp
+
+#ifndef _BSP_CONFIG_H
+#define _BSP_CONFIG_H
+
+#include <xc.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "peripheral/ports/plib_ports.h"
+
+#define BSP_OSC_FREQUENCY 20000000
+
+typedef enum
+{
+    /* SWITCH 1 */
+     BSP_SWITCH_1 = /*DOM-IGNORE-BEGIN*/PORTS_BIT_POS_13/*DOM-IGNORE-END*/
+
+} BSP_SWITCH;
+
+typedef enum
+{
+    /* Switch pressed */
+    BSP_SWITCH_STATE_PRESSED = /*DOM-IGNORE-BEGIN*/0/*DOM-IGNORE-END*/,
+
+   /* Switch not pressed */
+    BSP_SWITCH_STATE_RELEASED = /*DOM-IGNORE-BEGIN*/1/*DOM-IGNORE-END*/
+
+} BSP_SWITCH_STATE;
+
+typedef enum
+{
+    /* LED 1 */
+    BSP_LED_1 = /*DOM-IGNORE-BEGIN*/PORTS_BIT_POS_7/*DOM-IGNORE-END*/,
+                                                                      
+    /* LED 2 */                                                       
+    BSP_LED_2 = /*DOM-IGNORE-BEGIN*/PORTS_BIT_POS_8/*DOM-IGNORE-END*/
+
+} BSP_LED;
+
+typedef enum
+{
+    /* LED State is on */
+    BSP_LED_STATE_OFF = /*DOM-IGNORE-BEGIN*/0,/*DOM-IGNORE-END*/
+
+    /* LED State is off */
+    BSP_LED_STATE_ON = /*DOM-IGNORE-BEGIN*/1,/*DOM-IGNORE-END*/
+
+} BSP_LED_STATE;
+
+void BSP_Initialize(void);
+
+void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
+
+BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
+
+void BSP_LEDToggle(BSP_LED led);
+
+void BSP_LEDOn(BSP_LED led);
+
+void BSP_LEDOff(BSP_LED led);
+
+BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH bspSwitch);
+
+#endif //_BSP_CONFIG_H
+
+// #include "bsp_config.h"
+
+void BSP_Initialize(void )
+{
+    /* Switch off all the LEDS */ 
+    PLIB_PORTS_PinClear( PORTS_ID_0, PORT_CHANNEL_B, BSP_LED_1 );
+    PLIB_PORTS_PinClear( PORTS_ID_0, PORT_CHANNEL_B, BSP_LED_2 );
+}
+
+void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state)
+{
+    /* Switch ON the LED */
+    PLIB_PORTS_PinWrite ( PORTS_ID_0 , PORT_CHANNEL_B , led, state );
+}
+
+void BSP_LEDOn(BSP_LED led)
+{
+    PLIB_PORTS_PinSet( PORTS_ID_0, PORT_CHANNEL_B, led);
+}
+
+void BSP_LEDOff(BSP_LED led)
+{
+    PLIB_PORTS_PinClear( PORTS_ID_0, PORT_CHANNEL_B, led);
+}
+
+BSP_LED_STATE BSP_LEDStateGet(BSP_LED led)
+{
+    return(PLIB_PORTS_PinGetLatched(PORTS_ID_0, PORT_CHANNEL_B, led));
+}
+
+void BSP_LEDToggle(BSP_LED led)
+{
+    PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_B,led );
+}
+
+BSP_SWITCH_STATE BSP_SwitchStateGet( BSP_SWITCH bspSwitch )
+{
+    return ( PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_B, bspSwitch) );
+}
+
+/*******************************************************************************
+ End of File
+*/
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -212,7 +323,7 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event,
             appData.state = APP_STATE_WAIT_FOR_CONFIGURATION;
             BSP_LEDOn (APP_USB_LED_1);
             BSP_LEDOn (APP_USB_LED_2);
-            BSP_LEDOff (APP_USB_LED_3);
+            //BSP_LEDOff (APP_USB_LED_3);
 
             break;
 
@@ -227,7 +338,7 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event,
 
                 BSP_LEDOff ( APP_USB_LED_1 );
                 BSP_LEDOff ( APP_USB_LED_2 );
-                BSP_LEDOn ( APP_USB_LED_3 );
+                //BSP_LEDOn ( APP_USB_LED_3 );
 
                 /* Register the Application HID Event Handler. */
 
@@ -239,7 +350,7 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event,
         case USB_DEVICE_EVENT_SUSPENDED:
             BSP_LEDOff ( APP_USB_LED_1 );
             BSP_LEDOn ( APP_USB_LED_2 );
-            BSP_LEDOn ( APP_USB_LED_3 );
+            //BSP_LEDOn ( APP_USB_LED_3 );
             break;
 
         case USB_DEVICE_EVENT_RESUMED:
@@ -446,6 +557,8 @@ void APP_Initialize ( void )
     appData.isReportReceived = false;
     appData.isReportSentComplete = true;
 
+    // fake
+    BSP_Initialize();
 }
 
 
