@@ -175,6 +175,29 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
    function driver */
 #define USB_DEVICE_HID_QUEUE_DEPTH_COMBINED 2
 
+// *****************************************************************************
+// *****************************************************************************
+// Section: Configuration specific application constants.
+// *****************************************************************************
+// *****************************************************************************
+
+/* Tick time in 1msec units */
+#define APP_USB_SWITCH_DEBOUNCE_COUNT (160)
+
+/* Macro defines USB internal DMA Buffer criteria*/
+#define APP_MAKE_BUFFER_DMA_READY
+
+/* Macros defines board specific led */
+#define APP_USB_LED_1    BSP_LED_1
+
+/* Macros defines board specific led */
+#define APP_USB_LED_2    BSP_LED_2
+
+/* Macros defines board specific led */
+#define APP_USB_LED_3    BSP_LED_3
+
+/* Macros defines board specific switch */
+#define APP_USB_SWITCH_1    BSP_SWITCH_1
 
 
 
