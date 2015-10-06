@@ -35,6 +35,18 @@
         <Path>Source Files/framework/system/ports/src</Path>
       </File>
       <File>
+        <Name>drv_usart.c</Name>
+        <Path>Source Files/framework/driver/usart/src/dynamic</Path>
+      </File>
+      <File>
+        <Name>drv_usart.h</Name>
+        <Path>Header Files/framework/driver/usart</Path>
+      </File>
+      <File>
+        <Name>drv_usart_read_write.c</Name>
+        <Path>Source Files/framework/driver/usart/src/dynamic</Path>
+      </File>
+      <File>
         <Name>usb_device.c</Name>
         <Path>Source Files/framework/usb/src/dynamic</Path>
       </File>
@@ -45,6 +57,14 @@
       <File>
         <Name>drv_usbfs_device.c</Name>
         <Path>Source Files/framework/driver/usb/usbfs/src/dynamic</Path>
+      </File>
+      <File>
+        <Name>driver.h</Name>
+        <Path>Header Files/framework/driver</Path>
+      </File>
+      <File>
+        <Name>drv_usart_buffer_queue.c</Name>
+        <Path>Source Files/framework/driver/usart/src/dynamic</Path>
       </File>
       <File>
         <Name>sys_devcon.c</Name>
@@ -96,12 +116,12 @@
       <Template>
         <Name>system_definitions.h</Name>
         <Path>Header Files/app/system_config/USB2BT</Path>
-        <Checksum>9F0265CD9917DF32BD851A1C30434731</Checksum>
+        <Checksum>C0BB904B4476EF95F671CB55EB68BF9D</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt.c</Name>
         <Path>Source Files/app/system_config/USB2BT</Path>
-        <Checksum>47A5076AA91BAE06631DEEC4F640395C</Checksum>
+        <Checksum>1B2D8844F36AD676438E0C1B6262A314</Checksum>
       </Template>
       <Template>
         <Name>sys_clk_static.h</Name>
@@ -125,17 +145,17 @@
       <Template>
         <Name>system_config.h</Name>
         <Path>Header Files/app/system_config/USB2BT</Path>
-        <Checksum>A3E2AE22A123404220FF580F3191E4E1</Checksum>
+        <Checksum>17EAEA7E1B4186B61B9791890203F083</Checksum>
       </Template>
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/USB2BT</Path>
-        <Checksum>CEFEA27333499AA6F48BDE7D3CDD3269</Checksum>
+        <Checksum>FA1A5C91723F39719D4AB6BC60AD5C4C</Checksum>
       </Template>
       <Template>
         <Name>sys_ports_static.c</Name>
         <Path>Source Files/app/system_config/USB2BT/framework/system/ports/src</Path>
-        <Checksum>211C588A93F7BBA3887CEBFFF7E1772B</Checksum>
+        <Checksum>1BEAED527C9C2F1D5EC42807E63F2610</Checksum>
       </Template>
     </Templates>
     <Libraries>

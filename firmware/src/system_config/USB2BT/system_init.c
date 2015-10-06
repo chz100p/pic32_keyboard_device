@@ -392,6 +392,26 @@ const USB_DEVICE_INIT usbDevInitData =
 // *****************************************************************************
 // *****************************************************************************
 
+//<editor-fold defaultstate="collapsed" desc="DRV_USART Initialization Data">
+
+const DRV_USART_INIT drvUsart0InitData =
+{
+    .moduleInit.value = DRV_USART_POWER_STATE_IDX0,
+    .usartID = DRV_USART_PERIPHERAL_ID_IDX0, 
+    .mode = DRV_USART_OPER_MODE_IDX0,
+    .modeData.AddressedModeInit.address = DRV_USART_OPER_MODE_DATA_IDX0,
+    .flags = DRV_USART_INIT_FLAGS_IDX0,
+    .brgClock = DRV_USART_BRG_CLOCK_IDX0,
+    .lineControl = DRV_USART_LINE_CNTRL_IDX0,
+    .baud = DRV_USART_BAUD_RATE_IDX0,
+    .handshake = DRV_USART_HANDSHAKE_MODE_IDX0,
+    .interruptTransmit = DRV_USART_XMIT_INT_SRC_IDX0,
+    .interruptReceive = DRV_USART_RCV_INT_SRC_IDX0,
+    .queueSizeTransmit = DRV_USART_XMIT_QUEUE_SIZE_IDX0,
+    .queueSizeReceive = DRV_USART_RCV_QUEUE_SIZE_IDX0,
+};
+
+// </editor-fold>
 //<editor-fold defaultstate="collapsed" desc="DRV_USB Initialization Data">
 
 /******************************************************
@@ -492,6 +512,9 @@ void SYS_Initialize ( void* data )
     SYS_PORTS_Initialize();
 
     /* Initialize Drivers */
+    sysObj.drvUsart0 = DRV_USART_Initialize(DRV_USART_INDEX_0, (SYS_MODULE_INIT *)&drvUsart0InitData);
+    SYS_INT_VectorPrioritySet(INT_VECTOR_UART2, INT_PRIORITY_LEVEL1);
+    SYS_INT_VectorSubprioritySet(INT_VECTOR_UART2, INT_SUBPRIORITY_LEVEL0);
     /* Initialize USB Driver */ 
     sysObj.drvUSBObject = DRV_USBFS_Initialize(DRV_USBFS_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);
 

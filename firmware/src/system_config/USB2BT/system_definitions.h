@@ -57,6 +57,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "system/devcon/sys_devcon.h"
 #include "system/int/sys_int.h"
 #include "system/console/sys_console.h"
+#include "driver/usart/drv_usart.h"
 #include "system/ports/sys_ports.h"
 #include "system/debug/sys_debug.h"
 #include "system/command/sys_command.h"
@@ -92,6 +93,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 typedef struct
 {
     SYS_MODULE_OBJ  sysDevcon;
+    SYS_MODULE_OBJ  drvUsart0;
     SYS_MODULE_OBJ  drvUSBObject;
     
     SYS_MODULE_OBJ  usbDevObject0;
